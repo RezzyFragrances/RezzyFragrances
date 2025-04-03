@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rezzy Fragrances</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet"> <!-- Lora Font -->
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lora', serif;  /* Elegant font */
+            line-height: 1.6;
+            background-color: #000000;  /* Matte Black Background */
+            color: #ecf0f1; /* Light Text */
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1c1c1c;  /* Dark Header */
+            color: white;
+            padding: 15px 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        header img {
+            max-height: 80px;
+            cursor: pointer;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #e74c3c;
+            text-decoration: none;
+            font-size: 1.2em;
+            padding: 8px 16px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #34495e;
+            border-radius: 5px;
+        }
+
+        .container {
+            width: 80%;
+            margin: 120px auto 20px;
+            padding: 20px 0;
+        }
+
+        .notice {
+            text-align: center;
+            font-size: 1.2em;
+            color: #e74c3c;
+            margin-bottom: 40px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .product-card {
+            background: #000000;  /* Black background around product cards */
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);  /* Slightly lighter shadow */
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid #000000;  /* Black border around the product cards */
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .product-card h3 {
+            margin-top: 15px;
+            font-size: 1.6em;
+            color: #f39c12;  /* Elegant golden tone for the titles */
+        }
+
+        .product-card p {
+            font-size: 1.2em;
+            color: #bdc3c7;  /* Softer gray text color */
+            margin-top: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1c1c1c;  /* Dark Footer */
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 40px;
+            position: relative;
+        }
+
+        .footer a {
+            color: #e74c3c;
+            text-decoration: none;
+            font-size: 1.2em;
+            margin: 0 20px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Popup for Cash Payment Notice */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 50px 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+            width: 350px;
+            z-index: 999;  /* Ensure the popup stays above all other content */
+        }
+
+        .popup p {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .popup button {
+            margin-top: 10px;
+            padding: 15px 25px;
+            background-color: #e74c3c;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+
+        .popup button:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <!-- Logo and Navigation Links -->
+    <a href="#">
+        <img src="https://i.imgur.com/9Zp0glN_d.png" alt="Rezzy Fragrances Logo">
+    </a>
+
+    <!-- Navigation for View Cart and Contact -->
+    <nav>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<!-- Popup for Cash Payment Notice -->
+<div class="popup" id="cashPopup">
+    <p>Cash Payments Only</p>
+    <button onclick="closePopup()">Got It</button>
+</div>
+
+<!-- Notice to contact for purchasing -->
+<div class="notice">
+    <p>To purchase any fragrance, please contact us via the <a href="contact.html">Contact Page</a>.</p>
+</div>
+
+<div class="container">
+    <div class="product-grid">
+        <!-- Product 1: Stronger With You Intensely -->
+        <div class="product-card">
+            <img src="https://i.imgur.com/dKT7L33_d.png?maxwidth=520&shape=thumb&fidelity=high" alt="Stronger With You Intensely">
+            <h3>Stronger With You Intensely</h3>
+            <p>350 QAR</p>
+        </div>
+
+        <!-- Product 2: TOM FORD Oud Wood -->
+        <div class="product-card">
+            <img src="https://i.imgur.com/FP5AXq5_d.png?maxwidth=520&shape=thumb&fidelity=high" alt="TOM FORD Oud Wood">
+            <h3>TOM FORD Oud Wood</h3>
+            <p>350 QAR</p>
+        </div>
+
+        <!-- Product 3: MFK Baccarat Rouge 540 Eau DP -->
+        <div class="product-card">
+            <img src="https://i.imgur.com/nzysG9L_d.jpeg?maxwidth=520&shape=thumb&fidelity=high" alt="MFK Baccarat Rouge 540 Eau DP">
+            <h3>MFK Baccarat Rouge 540 Eau DP</h3>
+            <p>250 QAR</p>
+        </div>
+
+        <!-- Product 4: MFK Baccarat Rouge 540 Extrait DP -->
+        <div class="product-card">
+            <img src="https://i.imgur.com/nCdxqL5_d.jpeg?maxwidth=520&shape=thumb&fidelity=high" alt="MFK Baccarat Rouge 540 Extrait DP">
+            <h3>MFK Baccarat Rouge 540 Extrait DP</h3>
+            <p>250 QAR</p>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    <p>© 2025 Rezzy Fragrances | <a href="contact.html">Contact</a> | <a href="#">Privacy Policy</a></p>
+</div>
+
+<script>
+    // Cash Popup visibility (show and hide)
+    function showPopup() {
+        document.getElementById('cashPopup').style.display = 'block';
+    }
+
+    function closePopup() {
+        document.getElementById('cashPopup').style.display = 'none';
+    }
+
+    // Show popup after 2 seconds for demonstration
+    setTimeout(showPopup, 2000);
+</script>
+
+</body>
+</html>
